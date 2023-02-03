@@ -29,11 +29,12 @@
     width: 30px;
     height: 30px;
     border-radius: 20px;
-    
+    transition: 0.5s;
+
 }
 
 .optionsButton:hover{
-    background-color: gray;
+    background-color: #CBCBCB;
 }
 
 .optionsButton img{
