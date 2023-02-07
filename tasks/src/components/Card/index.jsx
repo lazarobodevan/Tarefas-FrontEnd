@@ -16,7 +16,7 @@ function Card({id, name, status, description}){
                     
                 </div>
                 
-                <span className='description'>{description.substring(0,50)}...</span>
+                <span className='description'>{description.substring(0,50)}{description.length > 50 ? "...":""}</span>
             </div>
         </>
     )
