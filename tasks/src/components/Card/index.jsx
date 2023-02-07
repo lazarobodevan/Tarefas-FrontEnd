@@ -2,21 +2,34 @@
 import './styles.css'
 import OptionsButton from '../OptionsButton';
 import Modal from '../Modal';
+import { useState } from 'react';
 //adicionar position
 function Card({id, name, status, description}){
 
+    const [modalVisible, setModalVisible] = useState(false);
+
+    function handleModalVisible(visibility){
+        setModalVisible(visibility);
+    }
+
     return(
         <>
-            <div className='card'>
-                <div className='headerWrap'>
+            <div className='cardModalWrapper'>
+                <div className='card' onClick={handleModalVisible}>
+                    <div className='headerWrap'>
+                        
+                        <strong>{name}</strong>
+                        
+                        <OptionsButton/>
+                        
+                    </div>
                     
-                    <strong>{name}</strong>
-                    
-                    <OptionsButton/>
-                    
+                    <span className='description'>{description.substring(0,50)}{description.length > 50 ? "...":""}</span>
                 </div>
-                
-                <span className='description'>{description.substring(0,50)}{description.length > 50 ? "...":""}</span>
+                {
+                    modalVisible && <Modal name={name} desc={description}/>
+
+                }
             </div>
         </>
     )
