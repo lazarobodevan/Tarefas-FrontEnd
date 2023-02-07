@@ -3,8 +3,9 @@
     flex-direction: column;
 
     width: 80%;
-    height: calc(20vh+60px);
+    height: calc(20vh);
     overflow: visible;
+    position: relative;
 
     background-color: white;
     margin: 20px auto;
@@ -27,49 +28,9 @@
     justify-content: space-between;
 }
 
-.wrapperOptions{
-    position: relative;
-    display: block;
-}
-
-.optionsButton{
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    transition: 0.5s;
-}
-
-.optionsButton:hover{
-    background-color: #CBCBCB;
-}
-
-.optionsButton img{
-    width: 20px;
-    height: 20px;
-}
-
 .description{
     width: 100%;
     height: fit-content;
     margin-top: 15px;
     word-wrap: break-word;
-}
-
-.optionsPopup{
-    display: block;
-    position: absolute;
-    right: 20px;
-    top:0px;
-
-    padding: 5px;
-
-    background-color: white;
-    box-shadow: rgba(149, 157, 165, 0.8) 0px 8px 24px;
-}
-.optionsPopup div{
-    padding: 5px;
-    font-weight: bold;
 }

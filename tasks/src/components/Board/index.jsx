@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from '../Card'
 
 import './styles.css'
@@ -9,11 +9,17 @@ function Board({name, cards}){
             <div className='header'>
                 <strong>{name}</strong>
             </div>
-            <Card 
-                id={0}
-                status="Pendente"
-                name="Fazer TP"
-                description="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+            {
+            
+            cards.map((elem,index) =>{
+                return <Card 
+                    key={index}
+                    id={index}
+                    name= {elem.name}
+                    description= {elem.description}/>
+                    })
+                
+            }
         </div>
     )
 }

@@ -1,0 +1,61 @@
+.wrapperOptions{
+    position: relative;
+    display: block;
+}
+
+.optionsButton{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.optionsButton:hover{
+    background-color: #CBCBCB;
+}
+
+.optionsButton img{
+    width: 20px;
+    height: 20px;
+}
+
+.description{
+    width: 100%;
+    height: fit-content;
+    margin-top: 15px;
+    word-wrap: break-word;
+}
+
+.optionsPopup{
+    display: block;
+    position: absolute;
+    right: 20px;
+    top:0px;
+
+    padding: 5px;
+
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.8) 0px 8px 24px;
+
+    
+    animation: displayAnimation 0.2s both;
+}
+
+@keyframes displayAnimation {
+    0%{
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(5px);
+    }
+}
+
+.optionsPopup div{
+    padding: 5px;
+    font-weight: bold;
+}
