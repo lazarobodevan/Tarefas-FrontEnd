@@ -1,7 +1,7 @@
 import './styles.css';
-function Button({name}){
+function Button({name, onClick}){
     return(
-        <div className='button'>
+        <div className='button' onClick={onClick}>
             <span className='buttonName'>{name}</span>
         </div>
     )

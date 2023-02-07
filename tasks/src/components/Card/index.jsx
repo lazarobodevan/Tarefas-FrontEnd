@@ -9,7 +9,7 @@ function Card({id, name, status, description}){
     const [modalVisible, setModalVisible] = useState(false);
 
     function handleModalVisible(visibility){
-        setModalVisible(visibility);
+        setModalVisible(!modalVisible);
     }
 
     return(
@@ -27,7 +27,7 @@ function Card({id, name, status, description}){
                     <span className='description'>{description.substring(0,50)}{description.length > 50 ? "...":""}</span>
                 </div>
                 {
-                    modalVisible && <Modal name={name} desc={description}/>
+                    modalVisible && <Modal name={name} desc={description} onClose={handleModalVisible}/>
 
                 }
             </div>

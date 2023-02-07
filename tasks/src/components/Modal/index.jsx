@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from '../Button';
 import './styles.css';
-function Modal({name, desc}){
+function Modal({name, desc, onClose}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState();
@@ -29,7 +29,7 @@ function Modal({name, desc}){
             <div className="modal">
                 <textarea className="inputName" onChange={ e=> setNameAndResize(e,'40px')} placeholder="Minha atividade" value={name}/>
                 <textarea className="inputDesc" onChange={ e=> setDescAndResize(e,'90px')} value={desc}/>
-                <Button name={"Salvar"} />
+                <Button name={"Salvar"} onClick={onClose}/>
             </div>
         </div>
     )
