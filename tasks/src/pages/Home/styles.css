@@ -1,16 +1,22 @@
 .homeDiv{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-color: #faedcd;
     width: 100vw;
     height: 100vh;
-    padding-top: 20px;
+}
+
+h1{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: static;
 }
 
 .boardsWrapper{
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     align-items: center;
     justify-content: space-around;

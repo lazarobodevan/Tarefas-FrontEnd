@@ -13,7 +13,7 @@ function Board({name, cards}){
                 id={0}
                 status="Pendente"
                 name="Fazer TP"
-                description="aaaa"/>
+                description="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
         </div>
     )
 }
