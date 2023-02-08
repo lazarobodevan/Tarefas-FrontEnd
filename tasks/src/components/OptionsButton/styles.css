@@ -1,5 +1,6 @@
 .wrapperOptions{
-    position: relative;
+    position: absolute;
+    left: 85%;
     display: block;
 }
 
@@ -20,13 +21,6 @@
 .optionsButton img{
     width: 20px;
     height: 20px;
-}
-
-.description{
-    width: 100%;
-    height: fit-content;
-    margin-top: 15px;
-    word-wrap: break-word;
 }
 
 .optionsPopup{

@@ -1,6 +1,9 @@
 .modalWrapper{
     position: absolute;
     z-index: 10;
+    opacity: 1;
+
+    transition: opacity 1s ease;
 }
 
 .modalBackground{
@@ -54,4 +57,9 @@
     font-weight: normal;
     overflow: hidden;
     resize: none;
+}
+
+.button{
+    margin-top: 30%;
+    align-self: flex-end;
 }

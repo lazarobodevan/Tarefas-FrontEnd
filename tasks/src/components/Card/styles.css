@@ -4,7 +4,7 @@
 
     width: 80%;
     height: calc(20vh);
-    overflow: visible;
+    overflow: hidden;
     position: relative;
 
     background-color: white;
@@ -12,7 +12,6 @@
     border-radius: 5px;
 
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
 
     padding: 15px;
 }
@@ -29,10 +28,10 @@
 }
 
 .description{
-    width: 100%;
-    height: fit-content;
+    height: 100%;
     margin-top: 15px;
     word-wrap: break-word;
+
 }
 
 .cardModalWrapper{

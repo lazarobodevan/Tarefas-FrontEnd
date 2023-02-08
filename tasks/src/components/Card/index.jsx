@@ -15,7 +15,7 @@ function Card({id, name, status, description}){
     return(
         <>
             <div className='cardModalWrapper'>
-                <div className='card' onClick={handleModalVisible}>
+                <div className='card'>
                     <div className='headerWrap'>
                         
                         <strong>{name}</strong>
@@ -24,7 +24,7 @@ function Card({id, name, status, description}){
                         
                     </div>
                     
-                    <span className='description'>{description.substring(0,50)}{description.length > 50 ? "...":""}</span>
+                    <div className='description' onClick={handleModalVisible}>{description.substring(0,50)}{description.length > 50 ? "...":""}</div>
                 </div>
                 {
                     modalVisible && <Modal name={name} desc={description} onClose={handleModalVisible}/>
