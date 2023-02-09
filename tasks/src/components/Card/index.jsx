@@ -32,7 +32,7 @@ function Card({id, name, status, description}){
                                         name={name} 
                                         desc={description} 
                                         status={status}
-                                        onClose={handleModalVisible}/>
+                                        onClick={handleModalVisible}/>
 
                 }
             </div>

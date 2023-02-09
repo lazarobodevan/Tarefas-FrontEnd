@@ -13,8 +13,8 @@ function Board({name, cards}){
             
             cards && cards.map((elem,index) =>{
                 return <Card 
-                    key={index}
-                    id={index}
+                    key={elem.id}
+                    id={elem.id}
                     name= {elem.name}
                     description= {elem.description}
                     status={elem.status}/>

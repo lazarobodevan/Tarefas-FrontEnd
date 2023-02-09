@@ -33,8 +33,6 @@ function Home() {
       fetch('http://localhost:8080/tasks').then(t => t.json()).then(rearrangeCards).catch(console.log(cards));
     },[isCardChanged]);
 
-    console.log(cards);
-
     return (
       <div className='homeDiv'>
         <h1>Tarefas</h1>

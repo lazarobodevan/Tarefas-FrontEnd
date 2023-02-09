@@ -1,8 +1,8 @@
 import './styles.css';
 import dropdownIcon from '../../assets/arrow-down-sign-to-navigate.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function Dropdown({item}){
+function Dropdown({item, newStatus}){
 
     const [selected, setSelected] = useState(item);
     const [isActive, setIsActive] = useState(false);
@@ -14,6 +14,11 @@ function Dropdown({item}){
     function handleIsActive(){
         setIsActive(!isActive);
     }
+
+    useEffect(()=>{
+        newStatus(selected);
+        console.log(selected);
+    },[selected]);
     return(
         <div className="container">
             <div className="menuContainer">
@@ -26,7 +31,7 @@ function Dropdown({item}){
                     <ul>
                         <li onClick={() => handleSelected("Pendente")}><div className='option'><span>Pendente</span></div></li>
                         <li onClick={() => handleSelected("Em andamento")}><div className='option'><span>Em andamento</span></div></li>
-                        <li onClick={() => handleSelected("Concluído")}><div className='option'><span>Concluído</span></div></li>
+                        <li onClick={() => handleSelected("Concluido")}><div className='option'><span>Concluído</span></div></li>
                     </ul>
                 </nav>
             </div>
