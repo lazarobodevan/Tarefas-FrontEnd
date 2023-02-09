@@ -11,7 +11,7 @@ function Board({name, cards}){
             </div>
             {
             
-            cards.map((elem,index) =>{
+            cards && cards.map((elem,index) =>{
                 return <Card 
                     key={index}
                     id={index}
