@@ -16,7 +16,8 @@ function Board({name, cards}){
                     key={index}
                     id={index}
                     name= {elem.name}
-                    description= {elem.description}/>
+                    description= {elem.description}
+                    status={elem.status}/>
                     })
                 
             }

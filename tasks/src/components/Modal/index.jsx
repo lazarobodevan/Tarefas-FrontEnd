@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Button from '../Button';
+import Dropdown from '../Dropdown';
 import './styles.css';
-function Modal({name, desc, onClose}){
+function Modal({id, name, desc, status, onClose}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState();
@@ -29,6 +30,7 @@ function Modal({name, desc, onClose}){
             <div className="modal">
                 <textarea className="inputName" onChange={ e=> setNameAndResize(e,'40px')} placeholder="Minha atividade" value={name}/>
                 <textarea className="inputDesc" onChange={ e=> setDescAndResize(e,'90px')} value={desc}/>
+                <Dropdown item={status}/>
                 <Button name={"Salvar"} onClick={onClose}/>
             </div>
         </div>

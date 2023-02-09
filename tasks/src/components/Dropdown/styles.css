@@ -1,0 +1,48 @@
+ul li{
+    list-style-type: none;
+}
+
+li{
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+
+.menuButton{
+    display: flex;
+    width: 140px;
+    height: 30px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemSelected{
+    font-weight: bold;
+}
+
+.menu.active{
+    opacity: 1;
+    display: block;
+    position: absolute;
+    animation: displayAnimation 0.2s both;
+}
+
+.menu{
+    opacity: 0;
+    display: none;
+    margin-left: 10px;
+}
+
+.option{
+    display: flex;
+    height: 100%;
+    border-radius: 5px;
+    align-items: center;
+    padding: 5px;
+}
+
+.option:hover{
+    background-color: rgba(0, 0, 0, 0.164);
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
