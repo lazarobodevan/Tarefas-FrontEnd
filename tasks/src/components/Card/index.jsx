@@ -4,7 +4,7 @@ import OptionsButton from '../OptionsButton';
 import Modal from '../Modal';
 import { useState } from 'react';
 //adicionar position
-function Card({id, name, status, description}){
+function Card({id, name, status, description, hasChanged}){
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -32,7 +32,8 @@ function Card({id, name, status, description}){
                                         name={name} 
                                         desc={description} 
                                         status={status}
-                                        onClick={handleModalVisible}/>
+                                        onClick={handleModalVisible}
+                                        hasChanged={hasChanged}/>
 
                 }
             </div>

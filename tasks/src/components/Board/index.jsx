@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from '../Card'
 
 import './styles.css'
-function Board({name, cards}){
+function Board({name, cards, hasChanged}){
 
     return(
         <div className='wrapper'>
@@ -17,7 +17,8 @@ function Board({name, cards}){
                     id={elem.id}
                     name= {elem.name}
                     description= {elem.description}
-                    status={elem.status}/>
+                    status={elem.status}
+                    hasChanged={hasChanged}/>
                     })
                 
             }

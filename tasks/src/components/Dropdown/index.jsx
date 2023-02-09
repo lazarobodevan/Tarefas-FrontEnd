@@ -17,7 +17,6 @@ function Dropdown({item, newStatus}){
 
     useEffect(()=>{
         newStatus(selected);
-        console.log(selected);
     },[selected]);
     return(
         <div className="container">

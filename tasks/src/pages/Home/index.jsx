@@ -27,19 +27,27 @@ function Home() {
         }
       });
       setCards(board);
+      setIsCardChanged(true);
+    }
+
+    function handleCardsChanged(){
+      setIsCardChanged(!isCardChanged);
     }
 
     useEffect(()=>{
       fetch('http://localhost:8080/tasks').then(t => t.json()).then(rearrangeCards).catch(console.log(cards));
+      setIsCardChanged(true);
+      setIsCardChanged(false);
+      console.log(isCardChanged);
     },[isCardChanged]);
 
     return (
       <div className='homeDiv'>
         <h1>Tarefas</h1>
         <div className='boardsWrapper'>
-          <Board name={"Pendente"} cards={cards.pending}/>
-          <Board name={"Em andamento"} cards={cards.running}/>
-          <Board name={"Concluído"} cards={cards.concluded}/>
+          <Board name={"Pendente"} cards={cards.pending} hasChanged={handleCardsChanged}/>
+          <Board name={"Em andamento"} cards={cards.running} hasChanged={handleCardsChanged}/>
+          <Board name={"Concluído"} cards={cards.concluded} hasChanged={handleCardsChanged}/>
         </div>
       </div>
     )

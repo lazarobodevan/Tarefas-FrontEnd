@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
 import './styles.css';
-function Modal({id, name, desc, status, onClick}){
+function Modal({id, name, desc, status, onClick, hasChanged}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState('');
@@ -25,8 +25,7 @@ function Modal({id, name, desc, status, onClick}){
         setInputHeight(event, height);
     }
 
-    function actionClick(name, desc){
-        console.log(name);
+    function actionClick(){
         const body = {
             name: taskName,
             description: taskDesc,
@@ -40,10 +39,11 @@ function Modal({id, name, desc, status, onClick}){
             body: JSON.stringify(body)
         }
 
-        console.log(options);
         fetch(`http://localhost:8080/tasks/${id}`, options).then(t => t.json()).then(console.log).catch();
         onClick();
+        hasChanged();
     }
+    
 
     function initializeStates(){
         if(!taskName){
@@ -66,7 +66,7 @@ function Modal({id, name, desc, status, onClick}){
                 <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={initializeStates().name}/>
                 <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={initializeStates().desc}/>
                 <Dropdown item={status} newStatus={setTaskStatus}/>
-                <Button name={"Salvar"} onClick={()=>actionClick(taskName, taskDesc)}/>
+                <Button name={"Salvar"} onClick={()=>actionClick()}/>
             </div>
         </div>
     )
