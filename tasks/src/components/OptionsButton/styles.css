@@ -52,4 +52,11 @@
 .optionsPopup div{
     padding: 5px;
     font-weight: bold;
+    border-radius: 5px;
+}
+
+.optionsPopup div:hover{
+    background-color: rgba(149, 157, 165, 0.8);
+    transition: background-color 0.3s;
+    cursor: pointer;
 }

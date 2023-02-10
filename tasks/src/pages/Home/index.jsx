@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Board from '../../components/Board'
+import {getTasks} from '../../services/api.js';
 import './styles.css'
 function Home() {
   
@@ -35,7 +36,7 @@ function Home() {
     }
 
     useEffect(()=>{
-      fetch('http://localhost:8080/tasks').then(t => t.json()).then(rearrangeCards).catch(console.log(cards));
+      getTasks().then(rearrangeCards).catch(console.log);
       setIsCardChanged(true);
       setIsCardChanged(false);
       console.log(isCardChanged);

@@ -1,9 +1,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import optionIcon from '../../assets/option.png';
+import { deleteTask } from '../../services/api';
 
 import './styles.css';
-function OptionsButton(){
+function OptionsButton({hasChanged, id, showModal}){
     const [isVisible, setVisible] = useState(false);
     const optionRef = useRef();
 
@@ -15,6 +16,10 @@ function OptionsButton(){
 
     const handleClick = () => {
         setVisible(!isVisible);
+    }
+
+    const onClickDelete = () =>{
+        deleteTask(id).then(()=> hasChanged());
     }
 
     useEffect(()=>{
@@ -32,8 +37,8 @@ function OptionsButton(){
             {
                 isVisible && (
                     <div className='optionsPopup'>
-                        <div>Editar</div>
-                        <div>Excluir</div>
+                        <div onClick={()=>showModal()}>Editar</div>
+                        <div onClick={onClickDelete}>Excluir</div>
                     </div>
                 )
             }

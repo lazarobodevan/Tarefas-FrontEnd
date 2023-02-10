@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
 import './styles.css';
-function Modal({id, name, desc, status, onClick, hasChanged}){
+import {updateTask} from '../../services/api.js';
+function Modal({id, name, desc, status, position, onClick, hasChanged}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState('');
@@ -26,20 +27,7 @@ function Modal({id, name, desc, status, onClick, hasChanged}){
     }
 
     function actionClick(){
-        const body = {
-            name: taskName,
-            description: taskDesc,
-            position: 10,
-            status: taskStatus.toUpperCase()
-        };
-
-        const options = {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        }
-
-        fetch(`http://localhost:8080/tasks/${id}`, options).then(t => t.json()).then(console.log).catch();
+        updateTask(id, taskName, taskDesc, position, taskStatus).then(console.log).catch();
         onClick();
         hasChanged();
     }

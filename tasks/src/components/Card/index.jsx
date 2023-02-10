@@ -20,7 +20,11 @@ function Card({id, name, status, description, hasChanged}){
                         
                         <strong>{name}</strong>
                         
-                        <OptionsButton/>
+                        <OptionsButton 
+                            hasChanged={hasChanged} 
+                            id={id}
+                            showModal={handleModalVisible}
+                        />
                         
                     </div>
                     
