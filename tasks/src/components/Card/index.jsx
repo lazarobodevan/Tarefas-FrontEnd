@@ -3,6 +3,7 @@ import './styles.css'
 import OptionsButton from '../OptionsButton';
 import Modal from '../Modal';
 import { useState } from 'react';
+import { updateTask } from '../../services/api';
 //adicionar position
 function Card({id, name, status, description, hasChanged}){
 
@@ -10,6 +11,11 @@ function Card({id, name, status, description, hasChanged}){
 
     function handleModalVisible(){
         setModalVisible(!modalVisible);
+    }
+    function modalActionClick(id, taskName, taskDesc, taskStatus, position){
+        updateTask(id, taskName, taskDesc, position, taskStatus).then(console.log).catch();
+        setModalVisible(!modalVisible);
+        hasChanged();
     }
 
     return(
@@ -36,8 +42,8 @@ function Card({id, name, status, description, hasChanged}){
                                         name={name} 
                                         desc={description} 
                                         status={status}
-                                        onClick={handleModalVisible}
-                                        hasChanged={hasChanged}/>
+                                        onClick={modalActionClick}
+                                    />
 
                 }
             </div>

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
 import './styles.css';
-import {updateTask} from '../../services/api.js';
-function Modal({id, name, desc, status, position, onClick, hasChanged}){
+
+function Modal({id, name, desc, status, position, onClick}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState('');
@@ -26,13 +26,6 @@ function Modal({id, name, desc, status, position, onClick, hasChanged}){
         setInputHeight(event, height);
     }
 
-    function actionClick(){
-        updateTask(id, taskName, taskDesc, position, taskStatus).then(console.log).catch();
-        onClick();
-        hasChanged();
-    }
-    
-
     function initializeStates(){
         if(!taskName){
             setTaskName(name);
@@ -54,7 +47,7 @@ function Modal({id, name, desc, status, position, onClick, hasChanged}){
                 <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={initializeStates().name}/>
                 <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={initializeStates().desc}/>
                 <Dropdown item={status} newStatus={setTaskStatus}/>
-                <Button name={"Salvar"} onClick={()=>actionClick()}/>
+                <Button name={"Salvar"} onClick={()=>onClick(id, taskName, taskDesc, taskStatus, position)}/>
             </div>
         </div>
     )
