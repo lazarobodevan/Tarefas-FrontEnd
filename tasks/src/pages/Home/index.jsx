@@ -37,11 +37,12 @@ function Home() {
       setIsModalVisible(!isModalVisible);
     }
 
-    function modalOnClick(id, taskName, taskDesc, taskStatus, position){
+    function modalOnClick(id, taskName, taskDesc, taskStatus){
       handleModalVisible();
-      createTask(taskName, taskDesc, -7);
+      createTask(taskName, taskDesc, cards.pending.length);
       handleCardsChanged();
     }
+
 
     useEffect(()=>{
       getTasks().then(rearrangeCards).catch(console.log);

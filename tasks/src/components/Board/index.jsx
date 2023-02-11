@@ -18,6 +18,7 @@ function Board({name, cards, hasChanged}){
                     name= {elem.name}
                     description= {elem.description}
                     status={elem.status}
+                    position={elem.position}
                     hasChanged={hasChanged}/>
                     })
                 

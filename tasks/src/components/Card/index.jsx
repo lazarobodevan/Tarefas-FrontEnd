@@ -4,7 +4,7 @@ import OptionsButton from '../OptionsButton';
 import Modal from '../Modal';
 import { useState } from 'react';
 import { updateTask } from '../../services/api';
-//adicionar position
+
 function Card({id, name, status, description, hasChanged}){
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -12,8 +12,9 @@ function Card({id, name, status, description, hasChanged}){
     function handleModalVisible(){
         setModalVisible(!modalVisible);
     }
-    function modalActionClick(id, taskName, taskDesc, taskStatus, position){
-        updateTask(id, taskName, taskDesc, position, taskStatus).then(console.log).catch();
+    
+    function modalActionClick(id, taskName, taskDesc, taskStatus){
+        updateTask(id, taskName, taskDesc, taskStatus).then(console.log).catch();
         setModalVisible(!modalVisible);
         hasChanged();
     }
@@ -24,7 +25,7 @@ function Card({id, name, status, description, hasChanged}){
                 <div className='card'>
                     <div className='headerWrap'>
                         
-                        <strong>{name}</strong>
+                        <strong>{name.substring(0,25)}{name.length > 25 ? "...":""}</strong>
                         
                         <OptionsButton 
                             hasChanged={hasChanged} 
@@ -34,7 +35,9 @@ function Card({id, name, status, description, hasChanged}){
                         
                     </div>
                     
-                    <div className='description' onClick={handleModalVisible}>{description.substring(0,50)}{description.length > 50 ? "...":""}</div>
+                    <div className='description' onClick={handleModalVisible}>
+                        {description && description.substring(0,50)}{description && description.length > 50 ? "...":""}
+                    </div>
                 </div>
                 {
                     modalVisible && <Modal 

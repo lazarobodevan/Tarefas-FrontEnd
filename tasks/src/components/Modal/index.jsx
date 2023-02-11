@@ -3,7 +3,7 @@ import Button from '../Button';
 import Dropdown from '../Dropdown';
 import './styles.css';
 
-function Modal({id, name, desc, status, position, onClick}){
+function Modal({id, name, desc, status, onClick}){
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState('');
@@ -35,10 +35,10 @@ function Modal({id, name, desc, status, position, onClick}){
         <div className="modalWrapper">
             <div className="modalBackground"></div>
             <div className="modal">
-                <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={taskName}/>
-                <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={taskDesc}/>
+                <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={taskName && taskName.substring(0,44)}/>
+                <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={taskDesc && taskDesc.substring(0,449)}/>
                 <Dropdown item={status} newStatus={setTaskStatus}/>
-                <Button name={"Salvar"} onClick={()=>onClick(id, taskName, taskDesc, taskStatus, position)}/>
+                <Button name={"Salvar"} onClick={()=>onClick(id, taskName, taskDesc, taskStatus)}/>
             </div>
         </div>
     )

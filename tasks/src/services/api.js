@@ -3,11 +3,10 @@ export const getTasks = () =>{
     return fetch('http://localhost:8080/tasks').then(t => t.json());
 }
 
-export const createTask = (taskName, taskDesc, taskPosition) =>{
+export const createTask = (taskName, taskDesc) =>{
     const body = {
         name: taskName,
         description: taskDesc,
-        position: taskPosition,
     };
 
     const options = {
@@ -20,13 +19,14 @@ export const createTask = (taskName, taskDesc, taskPosition) =>{
     return fetch('http://localhost:8080/tasks/', options);
 }
 
-export const updateTask = (id, taskName, taskDesc, position, taskStatus) =>{
+export const updateTask = (id, taskName, taskDesc, taskStatus) =>{
     const body = {
         name: taskName,
         description: taskDesc,
-        position: 10,
         status: taskStatus.toUpperCase()
     };
+
+    console.log(body)
 
     const options = {
         method: 'PUT',
