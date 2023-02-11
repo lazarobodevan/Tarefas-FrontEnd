@@ -37,7 +37,7 @@ function Home() {
       setIsModalVisible(!isModalVisible);
     }
 
-    function modalOnClick(taskName, taskDesc, taskPosition){
+    function modalOnClick(id, taskName, taskDesc, taskStatus, position){
       handleModalVisible();
       createTask(taskName, taskDesc, -7);
       handleCardsChanged();
@@ -45,9 +45,6 @@ function Home() {
 
     useEffect(()=>{
       getTasks().then(rearrangeCards).catch(console.log);
-      setIsCardChanged(true);
-      setIsCardChanged(false);
-      console.log(isCardChanged);
     },[isCardChanged]);
 
     return (
@@ -62,7 +59,7 @@ function Home() {
           <Button name={"+"} onClick={handleModalVisible}/>
         </div>
         {
-          isModalVisible && <Modal onClick={()=>{}}/>
+          isModalVisible && <Modal onClick={modalOnClick}/>
         }
       </div>
     )
