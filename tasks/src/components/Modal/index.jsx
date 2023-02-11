@@ -26,26 +26,17 @@ function Modal({id, name, desc, status, position, onClick}){
         setInputHeight(event, height);
     }
 
-    function initializeStates(){
-        if(!taskName){
-            setTaskName(name);
-        }
-        if(!taskDesc){
-            setTaskDesc(desc);
-        }
-
-        return {
-            name: taskName,
-            desc: taskDesc
-        }
-    }
+    useEffect(()=>{
+        setTaskName(name);
+        setTaskDesc(desc);
+    },[])
 
     return(
         <div className="modalWrapper">
             <div className="modalBackground"></div>
             <div className="modal">
-                <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={initializeStates().name}/>
-                <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={initializeStates().desc}/>
+                <textarea className="inputName" onChange={e=>setNameAndResize(e,'40px')} placeholder="Minha atividade" value={taskName}/>
+                <textarea className="inputDesc" onChange={e=>setDescAndResize(e, '90px')} value={taskDesc}/>
                 <Dropdown item={status} newStatus={setTaskStatus}/>
                 <Button name={"Salvar"} onClick={()=>onClick(id, taskName, taskDesc, taskStatus, position)}/>
             </div>

@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
 import Board from '../../components/Board'
-import {getTasks} from '../../services/api.js';
+import Button from '../../components/Button';
+import Modal from '../../components/Modal';
+import {createTask, getTasks} from '../../services/api.js';
 import './styles.css'
 function Home() {
   
-    // const pending = [{name:"Tarefa", description:"Descrição da tarefa", status:"Pendente"}, {name:"Tarefa2", description:"Descrição da tarefaaaaa aaaaa aaaaaa aaaaaaa aaaaaaaaaaaaaa2"},{name:"Tarefa2", description:"Descrição da tarefa2"},{name:"Tarefa2", description:"Descrição da tarefa2"}, {name:"Tarefa2", description:"Descrição da tarefa2"}, ];
-    // const running = [{name:"TarefaR", description:"Descrição da tarefaR"}, {name:"Tarefa2R", description:"Descrição da tarefa2R"}];
-    // const concluded = [];
-
     const [isCardChanged, setIsCardChanged] = useState(false);
     const [cards, setCards] = useState({});
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     function rearrangeCards(body){
       const board = {
@@ -34,6 +33,15 @@ function Home() {
     function handleCardsChanged(){
       setIsCardChanged(!isCardChanged);
     }
+    function handleModalVisible(){
+      setIsModalVisible(!isModalVisible);
+    }
+
+    function modalOnClick(taskName, taskDesc, taskPosition){
+      handleModalVisible();
+      createTask(taskName, taskDesc, -7);
+      handleCardsChanged();
+    }
 
     useEffect(()=>{
       getTasks().then(rearrangeCards).catch(console.log);
@@ -50,6 +58,12 @@ function Home() {
           <Board name={"Em andamento"} cards={cards.running} hasChanged={handleCardsChanged}/>
           <Board name={"Concluído"} cards={cards.concluded} hasChanged={handleCardsChanged}/>
         </div>
+        <div className='modalButton'>
+          <Button name={"+"} onClick={handleModalVisible}/>
+        </div>
+        {
+          isModalVisible && <Modal onClick={()=>{}}/>
+        }
       </div>
     )
 }
