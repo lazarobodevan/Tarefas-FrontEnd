@@ -1,12 +1,14 @@
 
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import optionIcon from '../../assets/option.png';
 import { deleteTask } from '../../services/api';
-
+import { HomeContext } from '../../contexts/home';
 import './styles.css';
-function OptionsButton({hasChanged, id, showModal}){
+
+function OptionsButton({id, showModal}){
     const [isVisible, setVisible] = useState(false);
     const optionRef = useRef();
+    const {hasChanged} = useContext(HomeContext)
 
     const handleClickOutside = event =>{
         if(optionRef.current && !optionRef.current.contains(event.target)){

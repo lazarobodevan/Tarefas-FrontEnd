@@ -2,12 +2,15 @@
 import './styles.css'
 import OptionsButton from '../OptionsButton';
 import Modal from '../Modal';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { updateTask } from '../../services/api';
+import { HomeContext } from '../../contexts/home';
 
-function Card({id, name, status, description, hasChanged}){
+function Card({id, name, status, description}){
 
     const [modalVisible, setModalVisible] = useState(false);
+
+    const {hasChanged} = useContext(HomeContext);
 
     function handleModalVisible(){
         setModalVisible(!modalVisible);
@@ -28,7 +31,6 @@ function Card({id, name, status, description, hasChanged}){
                         <strong>{name.substring(0,25)}{name.length > 25 ? "...":""}</strong>
                         
                         <OptionsButton 
-                            hasChanged={hasChanged} 
                             id={id}
                             showModal={handleModalVisible}
                         />

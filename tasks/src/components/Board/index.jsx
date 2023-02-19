@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import Card from '../Card'
 
 import './styles.css'
-function Board({name, cards, hasChanged}){
+function Board({name, cards}){
 
     return(
         <div className='wrapper'>
@@ -18,8 +18,7 @@ function Board({name, cards, hasChanged}){
                     name= {elem.name}
                     description= {elem.description}
                     status={elem.status}
-                    position={elem.position}
-                    hasChanged={hasChanged}/>
+                        />
                     })
                 
             }

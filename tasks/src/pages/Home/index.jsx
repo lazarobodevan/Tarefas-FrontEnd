@@ -3,6 +3,7 @@ import Board from '../../components/Board'
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
 import {createTask, getTasks} from '../../services/api.js';
+import { HomeContext } from '../../contexts/home';
 import './styles.css'
 function Home() {
   
@@ -50,18 +51,22 @@ function Home() {
 
     return (
       <div className='homeDiv'>
-        <h1>Tarefas</h1>
-        <div className='boardsWrapper'>
-          <Board name={"Pendente"} cards={cards.pending} hasChanged={handleCardsChanged}/>
-          <Board name={"Em andamento"} cards={cards.running} hasChanged={handleCardsChanged}/>
-          <Board name={"Concluído"} cards={cards.concluded} hasChanged={handleCardsChanged}/>
-        </div>
-        <div className='modalButton'>
-          <Button name={"+"} onClick={handleModalVisible}/>
-        </div>
-        {
-          isModalVisible && <Modal onClick={modalOnClick}/>
-        }
+        <HomeContext.Provider value={{hasChanged: handleCardsChanged}}>
+          <h1>Tarefas</h1>
+          <div className='boardsWrapper'>
+            
+            <Board name={"Pendente"} cards={cards.pending} />
+            <Board name={"Em andamento"} cards={cards.running} />
+            <Board name={"Concluído"} cards={cards.concluded} />
+            
+          </div>
+          <div className='modalButton'>
+            <Button name={"+"} onClick={handleModalVisible}/>
+          </div>
+          {
+            isModalVisible && <Modal onClick={modalOnClick}/>
+          }
+        </HomeContext.Provider>
       </div>
     )
 }

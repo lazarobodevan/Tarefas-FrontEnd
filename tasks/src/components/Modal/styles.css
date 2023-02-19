@@ -39,7 +39,7 @@
     font-size: 20pt;
     font-weight: bold;
     overflow: hidden;
-    resize: none;
+    resize: vertical;
 }
 
 .inputName::placeholder{
